@@ -1,1 +1,1 @@
-export const Component = (name: string) => `Hello ${name}`;
+export { default } from './Layzily';

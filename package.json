@@ -2,17 +2,17 @@
   "name": "layzily",
   "version": "1.0.0",
   "description": "A React component that supports lazy loading images using the IntersectionObserver API",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/lib/index.js",
+  "types": "dist/lib/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "test": "jest --config jestconfig.json",
+    "build": "rimraf ./dist && webpack --mode production",
+    "test": "jest",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "tslint -p tsconfig.json",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
+    "lint": "tslint -c tslint.json --project tsconfig.json",
+    "prepare": "yarn build",
+    "prepublishOnly": "yarn test && yarn lint",
+    "preversion": "yarn lint",
+    "version": "yarn format && git add -A src",
     "postversion": "git push && git push --tags"
   },
   "repository": {
@@ -33,15 +33,47 @@
     "url": "https://github.com/bdeloeste/layzily/issues"
   },
   "homepage": "https://github.com/bdeloeste/layzily#readme",
-  "dependencies": {
-    "typescript": "^3.2.4"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "@types/enzyme": "^3.1.16",
+    "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/jest": "^23.3.13",
-    "jest": "^24.0.0",
+    "@types/react": "^16.7.21",
+    "@types/react-dom": "^16.0.11",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.8.0",
+    "enzyme-to-json": "^3.3.5",
+    "jest": "^23.6.0",
+    "jest-enzyme": "^7.0.1",
     "prettier": "^1.16.1",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "rimraf": "^2.6.3",
     "ts-jest": "^23.10.5",
+    "ts-loader": "^5.3.3",
     "tslint": "^5.12.1",
-    "tslint-config-prettier": "^1.17.0"
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.2.4",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(t|j)sx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/config/setupEnzyme.ts"
   }
 }

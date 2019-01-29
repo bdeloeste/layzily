@@ -1,11 +1,16 @@
 {
   "compilerOptions": {
+    "outDir": "./dist/lib",
     "target": "es5",
     "module": "commonjs",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "removeComments": true,
     "declaration": true,
-    "outDir": "./lib",
-    "strict": true
+    "sourceMap": true,
+    "jsx": "react",
+    "typeRoots": ["index.d.ts", "node_modules/@types"]
   },
   "include": ["src"],
-  "exclude": ["node_modules", "**/__tests__/*"]
+  "exclude": ["**/__tests__/*", "**/dist/"]
 }
