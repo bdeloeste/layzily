@@ -1,1 +1,1 @@
-export { default } from './Layzily';
+export * from './Layzily';

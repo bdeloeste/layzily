@@ -32,7 +32,7 @@
     "prefer-const": true,
     "quotemark": [true, "single", "jsx-double"],
     "semicolon": [true, "always"],
-    "trailing-comma": [true, { "multiline": "never", "singleline": "never" }],
+    "trailing-comma": true,
     "triple-equals": [true, "allow-null-check"],
     "typedef-whitespace": [
       true,
